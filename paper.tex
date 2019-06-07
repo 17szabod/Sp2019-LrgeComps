@@ -1,0 +1,148 @@
+\documentclass{article}
+\title{The Diameter of Large Components in $ r $-Edge-Colorings of $ K_n $}
+\author{Ruszink\'{o} Mikl\'{o}s, Daniel Szabo, William Song}
+\date{5/29/2019}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\graphicspath{ {CS_558/images/} }
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true, urlcolor=cyan
+}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\geometry{legalpaper, margin=1.5in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{problem}{Problem}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+
+\begin{document}
+	\maketitle
+	\section*{Abstract}
+	In this paper we review recent progress on the problems posed by Gy\'{a}rf\'{a}s in \cite{Gy2} and a result of Erd\H os and Fowler in \cite{EF}, and extend it by considering the largest monochromatic diameter two component in an $ r $-edge-coloring of $ K_n $. We give constructions for small $ r $ that do not have any such component of size $ \geq \frac{n}{r-1} $, suggesting that the problem with bounded diameter is very different than that of general components.
+	
+	
+	\section{Previous Results}
+	The field of Ramsey Theory aims to find large monochromatic components in edge colorings of a graph. In our case, we will be studying the size of the maximal component of bounded diameter in any coloring of the complete graph on $ n $ vertices $ K_n $.\\
+	A simple remark posed by Erd\"{o}s and Rado says that any 2-coloring of the edges of $ K_n $ has a monochromatic spanning component. In other words, either a graph or its complement is spanning. This problem of finding large monochromatic components was then generalized to $ r $ colors, for which Gy\'{a}rf\'{a}s proved a result that the largest monochromatic component in an $ r $-edge-coloring of $ K_n $ has size $ \geq \frac{n}{r-1} $. 
+	\begin{theorem}\label{1}(Gy\'{a}rf\'{a}s \cite{Gy1})
+		The size of the largest monochromatic component in an $ r $-edge-coloring of $ K_n $ has size $ \geq \dfrac{n}{r-1} $ and the equality holds if $ (r-1)^2|n $ and there is an affine plane of order $ r-1 $.
+	\end{theorem}
+	Also, he gives a construction for which equality holds by taking the affine plane, coloring each of the $ r $ parallel classes a different color, and blowing it up by replacing each vertex in the plane with $ \frac{n}{(r-1)^2} $ vertices from $ K_n $, and coloring the edges within these clusters arbitrarily. Thus, each monochromatic component has the same size of $ (r-1)\frac{n}{(r-1)^2}=\frac{n}{r-1} $.\\
+	The natural question that followed this was as to what happens when there is no affine plane of order $ r-1 $, which is conjectured to be when $ r-1 $ is not an prime power. This was answered by F\H{u}redi in \cite{F}, where he proved the following theorem.
+	\begin{theorem}\label{2}(F\H{u}redi \cite{F})
+		If an affine plane of order $ r-1 $ does not exist, then the size of the largest monochromatic component in an $ r $-edge-coloring of $ K_n $ has size $ \geq \dfrac{n}{r-1-(r-1)^{-1}} $.
+	\end{theorem}
+	This shows that there is a key difference in the size of the largest monochromatic component depending on the existence of the affine plane.\\
+	The other direction of the field follows two problems posed by Gy\'{a}rf\'{a}s in \cite{Gy2}:
+	\begin{problem}\label{P1}(Gy\'arf\'as, Problem 4.2 in \cite{Gy2})
+		For $r\ge 3$, is there a
+		monochromatic double star of size asymptotic to $n/(r-1)$ in every $r$-coloring of $K_n$.
+	\end{problem}
+	And the more general version,
+	\begin{problem}\label{P2}(Gy\'arf\'as, Problem 4.3 in \cite{Gy2})
+		Given positive numbers $n$, $r$.
+		Is there a constant $d$ (perhaps $d=3$)
+		such that in every $r$-coloring of $K_n$ there is a monochromatic subgraph of diameter at
+		most $d$ with at least $n/(r-1)$ vertices?
+	\end{problem}
+	Considerable progress has been made recently in the upper bounding of the diameter $ d $ in Problem \ref{P2}.
+	A result of Ruszink\'{o} solves the problem for diameter $ d=5 $ by proving the following theorem.
+	\begin{theorem}\label{fo1}(Ruszink\'{o}, Theorem 8 in \cite{rusz})
+		In every $r$-edge-coloring of $K_n$ there is a monochromatic subgraph of diameter at
+		most $5$ on at least $n/(r-1)$ vertices.
+	\end{theorem}
+	The proof relies on a theorem of Mubayi, where he proves that a complete bipartite graph colored $ r $ colors has a monochromatic double star of size $ n/r $. For $ r=3 $ and $ d=4 $ Mubayi proved that there is a size at least $\lceil n/2\rceil$ monochromatic component with diameter $ \leq 4 $ in 3-edge-colorings of $ K_n $.
+	\begin{theorem} (Mubayi \cite{M})\label{M3} Every $3$-edge-coloring of $K_n$ contains a
+		monochromatic component of diameter $\le 4$ on at least $\lceil n/2\rceil$
+		$($$n/2+1$ if $n\equiv 2\pmod{4}$$)$ vertices.
+	\end{theorem}
+	Shoham Letzter actually gives a more specific diameter 4 construction for any $ r $, showing that there is a triple star of size $ \frac{n}{r-1} $ for $ r\geq 3 $.
+	\begin{theorem} (Letzter \cite{SL})\label{SL} 
+		Let $ G = K_n $ be $ r $-edge-colored with $ r \ge 3 $. Then $ G $ contains a monochromatic triple star
+		with at least $ \dfrac{n}{r-1} $ vertices.
+	\end{theorem}
+	She uses the same earlier result of Mubayi as Ruszink\'{o}, and looks at the bipartite graph between the maximal double star and the rest of the graph.\\\\
+	The purpose of this paper is to explore, in problem \ref{P2}, the statement "\textit{perhaps $ d=3 $}." How do we know that this is the case? Can we find colorings with no large diameter 2 components? A theorem of Erd\H{o}s and Fowler answers this question for $ r=2 $.
+	\begin{theorem} (Erd\H os, Fowler \cite{EF})\label{EF1}
+		Every $2$-edge-coloring of $K_n$ contains a
+		monochromatic component of diameter $\le 2$ on at least $3n/4$ vertices.
+	\end{theorem}
+	The following example shows that the bound given in Theorem \ref{EF1} is sharp.
+	Partition the set of vertices evenly into parts $A_1,A_2,A_3,A_4$ of size $\le \lceil n/4\rceil$.
+	For $j>i$ color all edges red between $A_i$ and $A_j$ if $j-i=1$, else color them blue.
+	Color the edges inside each $A_i$ arbitrarily.\\
+	This shows a partitioning of $ K_4 $ into hamiltonian paths, and then "blowing up" for general $ n $. We extend their result for $ r=3,4,5, $ and $ 6 $.
+	
+	\section{Diamater Two}
+	Our approach to $ r $ color complete graphs such that they have no large monochromatic diameter 2 components revolves around taking smaller graphs of size $ n_r $ and $ k $-factoring them where $ k<(\frac{n_r}{r-1}-1) $ in a way that avoids large diameter two components, and then blowing up for general $ n $. We present an application of this method for $ r=3 $.
+	
+	% William's part
+	
+	\begin{theorem}
+		There exists a 3-edge-coloring of $ K_n $ with the largest monochromatic diameter $ \le 2 $ component of size $ \le \lceil \frac{3n}{7} \rceil $.
+	\end{theorem}
+
+	\begin{proof}
+		We color $ K_n $ as follows: partition the vertex set $ V $ into $ A_1,A_2,\ldots,A_7 $ with $ \lceil\frac{n}{7}\rceil-1\le |A_i| \le \lceil \frac{n}{7} \rceil $ and $ \sum_{i=1}^{7}|A_i|=n $. Color the edges between $ A_i $ and $ A_j $ for $ i\neq j $ color $ c\equiv_7 |i-j| $. This allows for 3 colors, and color the edges within $ A_i $ arbitrarily for $ i=1\ldots 7 $. This colors every edge of $ K_n $, and the largest diameter 2 component is just a star containing 3 of the subsets, each of size $ \le \lceil \frac{n}{7} \rceil $, so the component's size is $ \le \lceil \frac{3n}{7} \rceil $.
+	\end{proof}
+	
+	Here we performed a 2-factorization of $ K_7 $, or in our case a decomposition into hamiltonian cycles. It is a classic result in graph theory that for any odd $ n $, $ K_n $ can be decomposed into hamiltonian cycles. To $ k $-factorize our graphs for larger $ r $, we will be first decomposing into hamiltonian cycles, and taking our factors to be the union of particular cycles. Also, we will be choosing $ n_r $ to be prime, but still satisfying that $ k+1< \frac{n_r}{r-1} $. This allows us to always our cycles by distance as above. Another way to describe this decomposition would be to number the vertices of $ K_{n_r} $, and make each cycle $ C_i=\{(j,k) : |k-j|=i\} $, or the distance between each vertex is $ i $. With this we decompose into small stars, but the challenge is now to prove that there are no large diameter $ 2 $ components. We solve this for $ r=4 $.
+	\begin{theorem}
+		There exists a 4-edge-coloring of $ K_n $ with the largest monochromatic diameter $ \le 2 $ component of size $ \le \lceil \frac{5n}{17} \rceil $.
+	\end{theorem}
+
+	\begin{proof}
+		Let $ n_r=17 $, and decompose $ K_{17} $ into hamiltonian cycles by distance, as above. Partition this into pairs of hamiltonian cycles $ C_i,C_{2i} $. The union of each such pair is isomorphic to the union of $ C_1,C_2 $ where the isomorphism is simply renumbering the vertex $ v $ to $ v*i^{-1} \mod 17 $. So all that is left to prove is that $ G=C_1\cup C_2 $ has no large diameter $ 2 $ components.
+		\begin{lemma}
+			Any six vertices in $ G $ have two vertices at least three steps away.
+		\end{lemma}
+		\begin{proof}
+			Fix a vertex. There are 4 vertices in each direction reachable in two steps, for a total of 8 possibilities. Place the remaining 5 in these spots, and consider the vertex farthest to the left and farthest to the right. By Pigeonhole Principle, both sides must have at least one vertex, so the number of vertices between the two extremes is at least 5, so these two cannot reach each other in two steps.
+		\end{proof}
+	This means that every six vertices have at least two that are a distance $ 3 $, and therefore the largest monochromatic diameter 2 component has size $ \le \lceil \frac{5n}{17} \rceil $.
+	\end{proof}
+
+	\section*{Next Steps}
+
+	With this we have illustrated our approach, and extended Erd\H os and Fowler's original result. Now the challenge becomes generalization. We have found colorings for $ r=5 $ and $ 6 $, but have yet to attain a result for general $ r $. If we find a way to partition $ 0\ldots \frac{p-1}{2} $ ($ n_r=p $ a prime) into unions of $ \le r-2 $ hamiltonian cycles that do not admit large diameter two components, we will have proved for an infinite number of colors, but not necessarily all. The reason is that it is not ensured that for each $ r $ there will be a prime $ n_r $ that satisfies $ \dfrac{2(r-2)+1}{n_r}< \dfrac{1}{r-1} $ and $ n_r\le 2r(r-2)+1 $, or after some algebra, $ 2r^2-4r+1\le n_r \le 2r^2-4r+1 $
+	
+	%\bibliography{refs}
+	%\bibliographystyle{plain}
+	\begin{thebibliography}{99}
+		\bibitem{EF} P. Erd\H os, T. Fowler, Finding large $p$-colored diameter two subgraphs,
+		{\em Graphs and Combinatorics,} 15 (1999), 21-27.
+		
+		\bibitem{F} Z. F\"uredi, Covering the complete graph by partitions, {\em Discrete Mathematics,}
+		75 (1989), 217-226.
+		
+		\bibitem{Gy1} A. Gy\'arf\'as, Partition coverings and blocking sets in hypergraphs
+		(in Hungarian),
+		{\em Communications of the Computer and Automation Research Institute of
+			the Hngarian Academy of Sciences,} 71 (1977), 62 pp.
+		
+		\bibitem{Gy2} A. Gy\'arf\'as, Large monochromatic components in edge colorings of graphs -
+		a survey, {\em Ramsey Theory Yesterday, Today and Tomorrow,} Progress in Mathematics Series,
+		Vol. 285, ISBN 978-0-8176-8091-6, Birkh\"auser, 77-96.
+		
+		\bibitem{M} D. Mubayi, Generalizing the Ramsey Problem through Diameter,
+		{\em Electronic Journal of Combinatorics,} 9 (2002), $\#$R42.
+		
+		\bibitem{rusz} M. Rusink\'o, Large components in $ r $-edge-colorings of $ K_n $ have diameter at most five, {\em Journal of Graph Theory}, 69 (2011), 337-340.
+		
+		\bibitem{SL} S. Letzter, Large monochromatic triple stars in edge colourings, {\em JOURNAL}
+	\end{thebibliography}
+	
+\end{document}
